@@ -35,9 +35,6 @@ public class MainClass extends ApplicationAdapter {
         batch.begin();
         gf.render(batch);
         gf2.render(batch);
-//		fnt.draw(batch, gf.getPlayerType(), LEFT_INDENT, BOTTOM_INDENT+gf.FIELD_SIZE_PIXELS+gf.CELL_SIZE);
-//		fnt.draw(batch, gf2.getPlayerType(), LEFT_INDENT+400, BOTTOM_INDENT+gf2.FIELD_SIZE_PIXELS+gf2.CELL_SIZE);
-//		fnt.draw(batch, "Прицел", InputHandler.getMouseX(), InputHandler.getMouseY() + 30);
         batch.end();
 	}
 	public void update() {
