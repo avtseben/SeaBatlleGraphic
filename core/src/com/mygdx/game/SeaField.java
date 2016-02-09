@@ -4,7 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-public class SeaField {
+public abstract class SeaField {
 
 	final static int FIELD_SIZE = 10;
 	final static int CELL_SIZE = 30;
@@ -21,7 +21,7 @@ public class SeaField {
     protected static Texture aimTexture;
     protected String playerType;
     protected int shipSet[] = {4,3,3,2,2,2,1,1,1,1}; //4-Однопалубных 3-двухпалубных 2-трех палубных и 1 -четырехпалубный
-
+    protected boolean isMine = false;
 
 	public SeaField(int x, int y) {
 		this.x = x;
@@ -42,8 +42,7 @@ public class SeaField {
         batch.draw(seaTexture,x-112,y-44);
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
- //             if (fieldSet[i][j] == "ship" && playerType == "Human")//TODO When i develop the Human Human mode it would not be work!
-                if (fieldSet[i][j] == "ship")
+                if (fieldSet[i][j] == "ship" && isFieldIsMy())
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldSet[i][j] == "firedShip")
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
@@ -61,7 +60,7 @@ public class SeaField {
             selCellX = -1;
             selCellY = -1;
         }
-        if(InputHandler.isClicked() && selCellY > -1 && selCellX > -1) {
+        if(InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !isFieldIsMy()) {
             if(fieldSet[selCellY][selCellX] == "water" || fieldSet[selCellY][selCellX] == "ship") {
                 gotStrike(selCellX,selCellY);
             }
@@ -79,5 +78,7 @@ public class SeaField {
         }
         return fieldSet[y][x];
     }
-
+    public boolean isFieldIsMy() {
+        return isMine;
+    }
 }

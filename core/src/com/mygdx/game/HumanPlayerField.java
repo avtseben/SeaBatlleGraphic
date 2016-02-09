@@ -13,6 +13,7 @@ public class HumanPlayerField extends SeaField {
             }
         setAllShipOnField();
         playerType = "Human";
+        isMine = true;
     }
     public boolean setAllShipOnField() {
         char tempDir = 'H';
@@ -98,6 +99,5 @@ public class HumanPlayerField extends SeaField {
         }
         return true;
     }
-
 }
 
