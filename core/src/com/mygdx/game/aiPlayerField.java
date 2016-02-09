@@ -28,7 +28,7 @@ public class aiPlayerField extends SeaField {
             do {//Потенциально бесконечный цыкл. Если комп расставит корабли так что не сможет поставить 5-й цикл будет без конца
                 x = MainClass.rand.nextInt(FIELD_SIZE);
                 y = MainClass.rand.nextInt(FIELD_SIZE);
-            } while (!setOneShip(x, y, tempDir, shipSet[i], i+1));
+            } while (!setOneShip(x, y, tempDir, shipSet[i]));
         }
         return false;
     }
@@ -45,12 +45,12 @@ public class aiPlayerField extends SeaField {
         * 0 0 0 0 0 0 0 0 0 0
         * 0 0 0 0 0 1 1 1 1 1
         * */
-        setOneShip(2,8,'V',2,1);
-        setOneShip(7,8,'H',1,1);
-        setOneShip(6,0,'H',4,1);
+        setOneShip(2,8,'V',2);
+        setOneShip(7,8,'H',1);
+        setOneShip(6,0,'H',4);
         return true;
     }
-    private boolean setOneShip(int _x, int _y, char _dir, int _size, int _number)//TODO _number unneeded
+    private boolean setOneShip(int _x, int _y, char _dir, int _size)
     {
         int vx = 0, vy = 0;
         if (_dir == 'H')

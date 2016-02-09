@@ -69,7 +69,6 @@ public class SeaField {
     }
 
     public String gotStrike(int x, int y) {
-       String s;
         if (fieldSet[y][x] == "ship") {
             fieldSet[y][x] = "firedShip";
             return fieldSet[y][x];
