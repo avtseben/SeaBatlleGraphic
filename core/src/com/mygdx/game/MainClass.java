@@ -13,6 +13,7 @@ public class MainClass extends ApplicationAdapter {
 	BitmapFont fnt;
 	HumanPlayerField gf;
 	aiPlayerField gf2;
+	GameManager game;
 	public static Random rand = new Random();
 	final int LEFT_INDENT = 117;
 	final int BOTTOM_INDENT = 45;
@@ -23,6 +24,8 @@ public class MainClass extends ApplicationAdapter {
 		gf = new HumanPlayerField(LEFT_INDENT,BOTTOM_INDENT);
 		gf2 = new aiPlayerField(LEFT_INDENT+520,BOTTOM_INDENT);
 		fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
+		game = new GameManager(gf,gf2);
+
 	}
 
 
