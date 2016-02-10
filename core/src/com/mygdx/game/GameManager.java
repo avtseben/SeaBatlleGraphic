@@ -11,7 +11,7 @@ public class GameManager {
 
     public GameManager (SeaField player1, SeaField player2) {
         this.player1 = player1;
-        this.player2 = (aiPlayerField)player3;
+        this.player2 = (aiPlayerField)player2;
         player1Turn = true;
     }
     public void render(SpriteBatch batch) {
