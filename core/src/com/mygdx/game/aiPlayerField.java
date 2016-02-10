@@ -98,5 +98,19 @@ public class aiPlayerField extends SeaField {
         }
         return true;
     }
+    public int[] doStrikeCalculation (String[][] _fieldSet) {
+        int [] strikeCoordinate = new int[2];
+        for (int i = 0; i < FIELD_SIZE; i++)
+            for (int j = 0; j < FIELD_SIZE; j++){
+                if(_fieldSet[i][j] == "firedShip") {
+                    strikeCoordinate[0] = j;
+                    strikeCoordinate[1] = i+1;
+                    return strikeCoordinate;
+                }
+            }
+        strikeCoordinate[0] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
+        strikeCoordinate[1] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
+        return strikeCoordinate;
+    }
 
 }

@@ -85,4 +85,7 @@ public abstract class SeaField {
     public boolean fieldIsMy() {
         return isMine;
     }
+    public String[][] showFieldSet() {
+        return fieldSet;
+    }
 }
