@@ -3,6 +3,7 @@ package com.mygdx.game;
 public class aiPlayerField extends SeaField {
 
     private boolean testSetAllShip = false;
+    private autoIntelect ai;
 
     public aiPlayerField(int x, int y) {
         super(x, y);
@@ -11,6 +12,7 @@ public class aiPlayerField extends SeaField {
             for (int j = 0; j < FIELD_SIZE; j++){
                 fieldSet[i][j] = "water";
             }
+        ai = new autoIntelect();
         setAllShipOnField();
         playerType = "Computer";
     }
@@ -98,19 +100,10 @@ public class aiPlayerField extends SeaField {
         }
         return true;
     }
-    public int[] doStrikeCalculation (String[][] _fieldSet) {
-        int [] strikeCoordinate = new int[2];
-        for (int i = 0; i < FIELD_SIZE; i++)
-            for (int j = 0; j < FIELD_SIZE; j++){
-                if(_fieldSet[i][j] == "firedShip") {
-                    strikeCoordinate[0] = j;
-                    strikeCoordinate[1] = i+1;
-                    return strikeCoordinate;
-                }
-            }
-        strikeCoordinate[0] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
-        strikeCoordinate[1] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
-        return strikeCoordinate;
+    public int[] doStrike() {
+        return ai.doStrikeCalculation();
     }
-
+    public void hearEcho(int[] strikeCoordinate, String strikeEcho) {
+        ai.strikeLearning(strikeCoordinate,strikeEcho);
+    }
 }

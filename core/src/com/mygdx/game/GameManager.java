@@ -23,8 +23,10 @@ public class GameManager {
                 player1Turn = false;
         }
         else {
-            int strikeCoordinate[] = player2.doStrikeCalculation(player1.showFieldSet());
-            player1.gotStrike(strikeCoordinate[0],strikeCoordinate[1]);
+            int strikeCoordinate[] = player2.doStrike();
+            String strikeEcho = player1.gotStrike(strikeCoordinate[0],strikeCoordinate[1]);
+            player2.hearEcho(strikeCoordinate,strikeEcho);
+
             player1Turn = true;
         }
     }
