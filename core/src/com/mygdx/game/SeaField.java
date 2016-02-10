@@ -60,11 +60,15 @@ public abstract class SeaField {
             selCellX = -1;
             selCellY = -1;
         }
-        if(InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !fieldIsMy()) {
+    }
+
+    public boolean clickForStrike() {
+        if(InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !fieldIsMy())
             if(fieldSet[selCellY][selCellX] == "water" || fieldSet[selCellY][selCellX] == "ship") {
                 gotStrike(selCellX,selCellY);
-            }
+                return true;
         }
+        return false;
     }
 
     public String gotStrike(int x, int y) {

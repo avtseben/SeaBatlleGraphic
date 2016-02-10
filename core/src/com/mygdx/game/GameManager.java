@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public class GameManager {
 
     private SeaField player1;
@@ -10,12 +12,18 @@ public class GameManager {
         this.player1 = player1;
         this.player2 = player2;
         player1Turn = true;
-        startGame();
     }
-    public void startGame() {
-
+    public void render(SpriteBatch batch) {
+        update();
+    }
+    public  void update() {
         if(player1Turn) {
-            player2.gotStrike(2,2);
+            if (player2.clickForStrike())
+                player1Turn = false;
+        }
+        else {
+            player1.gotStrike(2,2);
+            player1Turn = true;
         }
     }
 }

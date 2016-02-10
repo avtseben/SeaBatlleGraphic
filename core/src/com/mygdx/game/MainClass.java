@@ -38,6 +38,7 @@ public class MainClass extends ApplicationAdapter {
         batch.begin();
         gf.render(batch);
         gf2.render(batch);
+		game.render(batch);
         batch.end();
 	}
 	public void update() {
