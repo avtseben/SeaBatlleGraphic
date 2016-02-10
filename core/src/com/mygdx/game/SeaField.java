@@ -42,7 +42,7 @@ public abstract class SeaField {
         batch.draw(seaTexture,x-112,y-44);
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
-                if (fieldSet[i][j] == "ship" && isFieldIsMy())
+                if (fieldSet[i][j] == "ship" && fieldIsMy())
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldSet[i][j] == "firedShip")
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
@@ -60,7 +60,7 @@ public abstract class SeaField {
             selCellX = -1;
             selCellY = -1;
         }
-        if(InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !isFieldIsMy()) {
+        if(InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !fieldIsMy()) {
             if(fieldSet[selCellY][selCellX] == "water" || fieldSet[selCellY][selCellX] == "ship") {
                 gotStrike(selCellX,selCellY);
             }
@@ -78,7 +78,7 @@ public abstract class SeaField {
         }
         return fieldSet[y][x];
     }
-    public boolean isFieldIsMy() {
+    public boolean fieldIsMy() {
         return isMine;
     }
 }
