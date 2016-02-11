@@ -46,9 +46,16 @@ public class HumanPlayerField extends SeaField {
         * 0 0 0 0 0 0 0 0 0 0
         * 0 0 0 0 0 1 1 1 1 1
         * */
-        setOneShip(2,8,'V',2);
-        setOneShip(7,8,'H',1);
-        setOneShip(6,0,'H',4);
+        setOneShip(0,0,'H',10);
+        setOneShip(0,1,'H',10);
+        setOneShip(0,2,'H',10);
+        setOneShip(0,3,'H',10);
+        setOneShip(0,4,'H',10);
+        setOneShip(0,5,'H',10);
+        setOneShip(0,6,'H',10);
+        setOneShip(0,7,'H',10);
+        setOneShip(0,8,'H',10);
+        setOneShip(0,9,'H',10);
         return true;
     }
     private boolean setOneShip(int _x, int _y, char _dir, int _size)//TODO _number unneeded
