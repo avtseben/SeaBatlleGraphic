@@ -15,25 +15,29 @@ public class autoIntelect {
     public int[] doStrikeCalculation() {
 
         int[] strikeCoordinate = new int[2];
-        for (int i = 0; i < SeaField.FIELD_SIZE; i++)
-            for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                if (enemiFieldShadow[i][j] == "firedShip") {
-                    if(isShipAlreadyFired(j,i)) {
+    //    for (int i = 0; i < SeaField.FIELD_SIZE; i++)
+      //      for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
+        //        if (enemiFieldShadow[i][j] == "firedShip") {
+          //          if(isShipAlreadyFired(j,i)) {
 
-                    }
-                    strikeCoordinate[0] = j;
-                    strikeCoordinate[1] = i + 1;
-                    return strikeCoordinate;
-                }
-            }
+            //        }
+     //               strikeCoordinate[0] = j;
+     //               strikeCoordinate[1] = i + 1;
+     //               return strikeCoordinate;
+             //   }
+          //  }
         do {
             strikeCoordinate[0] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
             strikeCoordinate[1] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
-        } while (cellSplashed(strikeCoordinate[0],strikeCoordinate[1]));
+        } while (cellSplashed(strikeCoordinate[0],strikeCoordinate[1]) || cellFired(strikeCoordinate[0],strikeCoordinate[1]));
             return strikeCoordinate;
     }
     private boolean cellSplashed(int _x, int _y) {
         if(enemiFieldShadow[_y][_x] == "splash") return true;
+        return false;
+    }
+    private boolean cellFired(int _x, int _y) {
+        if(enemiFieldShadow[_y][_x] == "firedShip") return true;
         return false;
     }
     public void strikeLearning(int[] strikeCoordinate, String strikeEcho) {
