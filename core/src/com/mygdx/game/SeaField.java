@@ -16,13 +16,21 @@ public abstract class SeaField {
     protected int selCellX;
     protected int selCellY;
     protected static Texture cellsTexture;
-    protected static Texture seaTexture;
+    protected Texture seaTexture;
     protected static Texture splashTexture;
     protected static Texture aimTexture;
     protected String playerType;
     protected int shipSet[] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1}; //4-Однопалубных 3-двухпалубных 2-трех палубных и 1 -четырехпалубный
     protected boolean isMine = false;
-    private boolean testSetAllShip = false;
+    protected boolean testSetAllShip = false;
+    //Field cell conditions
+    final static String WATER_CELL = "water";
+    final static String SPLASH_CELL = "splash";
+    final static String SHIP_CELL = "ship";
+    final static String FIRED_SHIP_CELL = "firedShip";
+    final static String NEXT_STRIKE_CELL = "next";
+    final static String DEAD_CELL = "dead";
+
 
     public SeaField(int x, int y) {
         this.x = x;
@@ -30,7 +38,7 @@ public abstract class SeaField {
         fieldSet = new String[FIELD_SIZE][FIELD_SIZE];
         for (int i = 0; i < FIELD_SIZE; i++)
             for (int j = 0; j < FIELD_SIZE; j++) {
-                fieldSet[i][j] = "water";
+                fieldSet[i][j] = WATER_CELL;
             }
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         aimTexture = new Texture("pointer.tga");
@@ -44,11 +52,11 @@ public abstract class SeaField {
         batch.draw(seaTexture, x - 112, y - 44);
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
-                if (fieldSet[i][j] == "ship" && fieldIsMy())
+                if (fieldSet[i][j] == SHIP_CELL && fieldIsMy())
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
-                if (fieldSet[i][j] == "firedShip")
+                if (fieldSet[i][j] == FIRED_SHIP_CELL)
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
-                if (fieldSet[i][j] == "splash")
+                if (fieldSet[i][j] == SPLASH_CELL)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
         }
@@ -67,7 +75,7 @@ public abstract class SeaField {
 
     public boolean clickForStrike() {
         if (InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !fieldIsMy())
-            if (fieldSet[selCellY][selCellX] == "water" || fieldSet[selCellY][selCellX] == "ship") {
+            if (fieldSet[selCellY][selCellX] == WATER_CELL || fieldSet[selCellY][selCellX] == SHIP_CELL) {
                 gotStrike(selCellX, selCellY);
                 return true;
             }
@@ -75,12 +83,12 @@ public abstract class SeaField {
     }
 
     public String gotStrike(int x, int y) {
-        if (fieldSet[y][x] == "ship") {
-            fieldSet[y][x] = "firedShip";
+        if (fieldSet[y][x] == SHIP_CELL) {
+            fieldSet[y][x] = FIRED_SHIP_CELL;
             return fieldSet[y][x];
         }
-        if (fieldSet[y][x] == "water") {
-            fieldSet[y][x] = "splash";
+        if (fieldSet[y][x] == WATER_CELL) {
+            fieldSet[y][x] = SPLASH_CELL;
             return fieldSet[y][x];
         }
         return fieldSet[y][x];
@@ -93,7 +101,7 @@ public abstract class SeaField {
     public boolean haveAliveShips() {
         for (int i = 0; i < FIELD_SIZE; i++)
             for (int j = 0; j < FIELD_SIZE; j++)
-                if (fieldSet[i][j] == "ship") return true;
+                if (fieldSet[i][j] == SHIP_CELL) return true;
         return false;
     }
     public boolean setAllShipOnField() {
@@ -146,8 +154,7 @@ public abstract class SeaField {
             if (!freeWater(_x + i * vx,_y + i * vy)) return false;//Если корабль уже стоит возращаем ложь
 
         for (int i = 0; i<_size;i++) {
-            fieldSet[_y + i * vy][_x + i * vx] = "ship";//Ставим корабль     2
-            //   shipMarker[_y + i * vy][_x + i * vx] = _number;
+            fieldSet[_y + i * vy][_x + i * vx] = SHIP_CELL;//Ставим корабль     2
         }
         if(testSetAllShip) {
             System.out.println("_x= " + _x  + "_vx*size= " + _size*vx);
@@ -171,7 +178,7 @@ public abstract class SeaField {
 
         for(int i = iStart; i <= iStop; i++) {
             for (int j = jStart; j <= jStop; j++) {
-                if (fieldSet[i][j] != "water") return false;//Если находим кусок корабля значит ложь
+                if (fieldSet[i][j] != WATER_CELL) return false;//Если находим кусок корабля значит ложь
             }
         }
         return true;

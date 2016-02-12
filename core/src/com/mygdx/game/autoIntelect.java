@@ -1,15 +1,21 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+
 public class autoIntelect {
 
     private String[][] enemiFieldShadow;
+    private BitmapFont fnt;
 
     public autoIntelect() {
         enemiFieldShadow = new String[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
         for (int i = 0; i < SeaField.FIELD_SIZE; i++)
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                enemiFieldShadow[i][j] = "water";
+                enemiFieldShadow[i][j] = SeaField.WATER_CELL;
             }
+        fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
+
     }
 
     public int[] doStrikeCalculation() {
@@ -17,7 +23,7 @@ public class autoIntelect {
         int[] strikeCoordinate = new int[2];
         for (int i = 0; i < SeaField.FIELD_SIZE; i++)
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                if (enemiFieldShadow[i][j] == "next") {
+                if (enemiFieldShadow[i][j] == SeaField.NEXT_STRIKE_CELL) {
                     strikeCoordinate[0] = j;
                     strikeCoordinate[1] = i;
                     return strikeCoordinate;
@@ -30,28 +36,28 @@ public class autoIntelect {
             return strikeCoordinate;
     }
     private boolean cellIsDead(int _x, int _y) {
-        if(enemiFieldShadow[_y][_x] == "dead") return true;
+        if(enemiFieldShadow[_y][_x] == SeaField.DEAD_CELL) return true;
         return false;
     }
     private boolean cellSplashed(int _x, int _y) {
-        if(enemiFieldShadow[_y][_x] == "splash") return true;
+        if(enemiFieldShadow[_y][_x] == SeaField.SPLASH_CELL) return true;
         return false;
     }
     private boolean cellFired(int _x, int _y) {
-        if(enemiFieldShadow[_y][_x] == "firedShip") return true;
+        if(enemiFieldShadow[_y][_x] == SeaField.FIRED_SHIP_CELL) return true;
         return false;
     }
     public void strikeLearning(int[] strikeCoordinate, String strikeEcho) {
         int x = strikeCoordinate[0];
         int y = strikeCoordinate[1];
-       if(strikeEcho == "firedShip") {
+       if(strikeEcho == SeaField.FIRED_SHIP_CELL) {
            scanEnemyShip(x,y);
            markDiagonalCells(x,y);
        }
-        if(strikeEcho == "splash" && enemiFieldShadow[y][x] == "next") {
+        if(strikeEcho == SeaField.SPLASH_CELL && enemiFieldShadow[y][x] == SeaField.NEXT_STRIKE_CELL) {
             for (int i = 0; i < SeaField.FIELD_SIZE; i++)
                 for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                    if(enemiFieldShadow[i][j] == "firedShip") {
+                    if(enemiFieldShadow[i][j] == SeaField.FIRED_SHIP_CELL) {
                         scanEnemyShip(j,i);
                     }
                 }
@@ -77,11 +83,11 @@ public class autoIntelect {
     }
 
     private void markDeadCell(int x, int y){
-        enemiFieldShadow[y][x] = "dead";
+        enemiFieldShadow[y][x] = SeaField.DEAD_CELL;
     }
     private void markNextStrike(int x, int y){
 
-        enemiFieldShadow[y][x] = "next";
+        enemiFieldShadow[y][x] = SeaField.NEXT_STRIKE_CELL;
     }
     private boolean scanEnemyShip(int _x, int _y)
     {
@@ -97,7 +103,7 @@ public class autoIntelect {
         else if (_y == SeaField.FIELD_SIZE-1) {iStop = _y-1;}
 
         for(int i = iStart; i <= iStop; i=i+2) {
-            if (enemiFieldShadow[i][_x] == "water") {
+            if (enemiFieldShadow[i][_x] == SeaField.WATER_CELL) {
                 markNextStrike(_x,i);
                 System.out.println(enemiFieldShadow[i][_x]);
                 System.out.println("coord:" + _x + i);
@@ -105,7 +111,7 @@ public class autoIntelect {
             }
         }
         for(int j = jStart; j <= jStop; j=j+2) {
-            if (enemiFieldShadow[_y][j] == "water") {
+            if (enemiFieldShadow[_y][j] == SeaField.WATER_CELL) {
                 markNextStrike(j,_y);
                 System.out.println(enemiFieldShadow[_y][j]);
                 System.out.println("coord: " + j + _y);
@@ -113,5 +119,8 @@ public class autoIntelect {
             }
         }
         return false;
+    }
+    public String[][] showYouMind() {
+        return enemiFieldShadow;
     }
 }

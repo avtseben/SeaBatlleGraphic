@@ -12,6 +12,7 @@ public class GameManager {
     private boolean gameContinue;
     private BitmapFont fnt;
     private String winnerMessage;
+    private boolean testShowCompMind = true;
 
     public GameManager (SeaField player1, SeaField player2) {
         this.player1 = player1;

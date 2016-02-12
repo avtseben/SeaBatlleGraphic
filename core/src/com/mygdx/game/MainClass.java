@@ -3,8 +3,9 @@ package com.mygdx.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 import java.util.Random;
 
 
@@ -17,12 +18,13 @@ public class MainClass extends ApplicationAdapter {
 	public static Random rand = new Random();
 	final int LEFT_INDENT = 117;
 	final int BOTTOM_INDENT = 45;
+	final static int NEXT_FIELD_INDENT = 520;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		gf = new HumanPlayerField(LEFT_INDENT,BOTTOM_INDENT);
-		gf2 = new aiPlayerField(LEFT_INDENT+520,BOTTOM_INDENT);
+		gf2 = new aiPlayerField(LEFT_INDENT+NEXT_FIELD_INDENT,BOTTOM_INDENT);
 		fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
 		game = new GameManager(gf,gf2);
 
