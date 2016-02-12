@@ -7,7 +7,7 @@ public class aiPlayerField extends SeaField {
 
     private autoIntelect ai;
     private boolean testSetAllShip = false;
-    private boolean testShowDeadCell = true;
+    private boolean testShowDeadCell = false;
     private Texture deadCellTexture;
     private Texture seaTexture;
 

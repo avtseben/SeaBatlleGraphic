@@ -71,10 +71,10 @@ public class autoIntelect {
         int jStop = _x + 1;
 
         //If on Egde position
-        if (_x == 0) { jStart = _x+2;}
-        else if (_x == SeaField.FIELD_SIZE-1) {jStop = _x-2;}
-        if (_y == 0) { iStart = _y+2;}
-        else if (_y == SeaField.FIELD_SIZE-1) {iStop = _y-2;}
+        if (_x == 0) { jStart = _x+1;}
+        else if (_x == SeaField.FIELD_SIZE-1) {jStop = _x-1;}
+        if (_y == 0) { iStart = _y+1;}
+        else if (_y == SeaField.FIELD_SIZE-1) {iStop = _y-1;}
 
         markDeadCell(jStart,iStart);
         markDeadCell(jStart,iStop);

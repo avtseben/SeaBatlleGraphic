@@ -45,6 +45,5 @@ public class GameManager {
                 player1Turn = true;
             }
         }
-        else System.out.print("Game Over");
     }
 }
