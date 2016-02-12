@@ -3,7 +3,6 @@ package com.mygdx.game;
 public class autoIntelect {
 
     private String[][] enemiFieldShadow;
-    private boolean weGotYa;
 
     public autoIntelect() {
         enemiFieldShadow = new String[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
@@ -11,7 +10,6 @@ public class autoIntelect {
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
                 enemiFieldShadow[i][j] = "water";
             }
-        weGotYa = false;
     }
 
     public int[] doStrikeCalculation() {
@@ -47,9 +45,8 @@ public class autoIntelect {
         int x = strikeCoordinate[0];
         int y = strikeCoordinate[1];
        if(strikeEcho == "firedShip") {
-           weGotYa = true;
            scanEnemyShip(x,y);
-           markDiagonalDeadCells(x,y);
+           markDiagonalCells(x,y);
        }
         if(strikeEcho == "splash" && enemiFieldShadow[y][x] == "next") {
             for (int i = 0; i < SeaField.FIELD_SIZE; i++)
@@ -61,7 +58,7 @@ public class autoIntelect {
         }
         enemiFieldShadow[y][x] = strikeEcho;
     }
-    private void markDiagonalDeadCells(int _x, int _y) {
+    private void markDiagonalCells(int _x, int _y) {
         int iStart = _y - 1;
         int jStart = _x - 1;
         int iStop = _y + 1;
@@ -81,9 +78,9 @@ public class autoIntelect {
 
     private void markDeadCell(int x, int y){
         enemiFieldShadow[y][x] = "dead";
-        System.out.println("markDead");
     }
     private void markNextStrike(int x, int y){
+
         enemiFieldShadow[y][x] = "next";
     }
     private boolean scanEnemyShip(int _x, int _y)
@@ -95,10 +92,6 @@ public class autoIntelect {
 
         //Edge conditions
         if (_x == 0) { jStart = _x+1;}
-        //Left Edge
-        // *  *
-        //x,y *
-        // *  *
         else if (_x == SeaField.FIELD_SIZE-1) {jStop = _x-1;}
         if (_y == 0) { iStart = _y+1;}
         else if (_y == SeaField.FIELD_SIZE-1) {iStop = _y-1;}
@@ -108,7 +101,6 @@ public class autoIntelect {
                 markNextStrike(_x,i);
                 System.out.println(enemiFieldShadow[i][_x]);
                 System.out.println("coord:" + _x + i);
-                weGotYa = true;
                 return true;
             }
         }
@@ -117,7 +109,6 @@ public class autoIntelect {
                 markNextStrike(j,_y);
                 System.out.println(enemiFieldShadow[_y][j]);
                 System.out.println("coord: " + j + _y);
-                weGotYa = true;
                 return true;
             }
         }
