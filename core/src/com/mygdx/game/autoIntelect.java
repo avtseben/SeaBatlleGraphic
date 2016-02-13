@@ -6,13 +6,19 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 public class autoIntelect {
 
     private String[][] enemiFieldShadow;
+    private CellState[][] enemiField;
     private BitmapFont fnt;
 
     public autoIntelect() {
+        enemiField = new CellState[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
+        for (int i = 0; i < SeaField.FIELD_SIZE; i++)
+            for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
+                enemiField[i][j] = CellState.WATER;
+            }
         enemiFieldShadow = new String[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
         for (int i = 0; i < SeaField.FIELD_SIZE; i++)
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                enemiFieldShadow[i][j] = SeaField.WATER_CELL;
+                enemiField[i][j] = CellState.WATER;
             }
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
 
@@ -23,7 +29,7 @@ public class autoIntelect {
         int[] strikeCoordinate = new int[2];
         for (int i = 0; i < SeaField.FIELD_SIZE; i++)
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                if (enemiFieldShadow[i][j] == SeaField.NEXT_STRIKE_CELL) {
+                if (enemiField[i][j] == CellState.NEXT_STRIKE) {
                     strikeCoordinate[0] = j;
                     strikeCoordinate[1] = i;
                     return strikeCoordinate;
@@ -36,33 +42,33 @@ public class autoIntelect {
             return strikeCoordinate;
     }
     private boolean cellIsDead(int _x, int _y) {
-        if(enemiFieldShadow[_y][_x] == SeaField.DEAD_CELL) return true;
+        if(enemiField[_y][_x] == CellState.DEAD) return true;
         return false;
     }
     private boolean cellSplashed(int _x, int _y) {
-        if(enemiFieldShadow[_y][_x] == SeaField.SPLASH_CELL) return true;
+        if(enemiField[_y][_x] == CellState.SPLASH) return true;
         return false;
     }
     private boolean cellFired(int _x, int _y) {
-        if(enemiFieldShadow[_y][_x] == SeaField.FIRED_SHIP_CELL) return true;
+        if(enemiField[_y][_x] == CellState.FIRED) return true;
         return false;
     }
-    public void strikeLearning(int[] strikeCoordinate, String strikeEcho) {
+    public void strikeLearning(int[] strikeCoordinate, CellState strikeEcho) {
         int x = strikeCoordinate[0];
         int y = strikeCoordinate[1];
-       if(strikeEcho == SeaField.FIRED_SHIP_CELL) {
+       if(strikeEcho == CellState.FIRED) {
            scanEnemyShip(x,y);
            markDiagonalCells(x,y);
        }
-        if(strikeEcho == SeaField.SPLASH_CELL && enemiFieldShadow[y][x] == SeaField.NEXT_STRIKE_CELL) {
+        if(strikeEcho == CellState.SPLASH && enemiField[y][x] == CellState.NEXT_STRIKE) {
             for (int i = 0; i < SeaField.FIELD_SIZE; i++)
                 for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                    if(enemiFieldShadow[i][j] == SeaField.FIRED_SHIP_CELL) {
+                    if(enemiField[i][j] == CellState.FIRED) {
                         scanEnemyShip(j,i);
                     }
                 }
         }
-        enemiFieldShadow[y][x] = strikeEcho;
+        enemiField[y][x] = strikeEcho;
     }
     private void markDiagonalCells(int _x, int _y) {
         int iStart = _y - 1;
@@ -83,11 +89,11 @@ public class autoIntelect {
     }
 
     private void markDeadCell(int x, int y){
-        enemiFieldShadow[y][x] = SeaField.DEAD_CELL;
+        enemiField[y][x] = CellState.DEAD;
     }
     private void markNextStrike(int x, int y){
 
-        enemiFieldShadow[y][x] = SeaField.NEXT_STRIKE_CELL;
+        enemiField[y][x] = CellState.NEXT_STRIKE;
     }
     private boolean scanEnemyShip(int _x, int _y)
     {
@@ -103,24 +109,24 @@ public class autoIntelect {
         else if (_y == SeaField.FIELD_SIZE-1) {iStop = _y-1;}
 
         for(int i = iStart; i <= iStop; i=i+2) {
-            if (enemiFieldShadow[i][_x] == SeaField.WATER_CELL) {
+            if (enemiField[i][_x] == CellState.WATER) {
                 markNextStrike(_x,i);
-                System.out.println(enemiFieldShadow[i][_x]);
+                System.out.println(enemiField[i][_x]);
                 System.out.println("coord:" + _x + i);
                 return true;
             }
         }
         for(int j = jStart; j <= jStop; j=j+2) {
-            if (enemiFieldShadow[_y][j] == SeaField.WATER_CELL) {
+            if (enemiField[_y][j] == CellState.WATER) {
                 markNextStrike(j,_y);
-                System.out.println(enemiFieldShadow[_y][j]);
+                System.out.println(enemiField[_y][j]);
                 System.out.println("coord: " + j + _y);
                 return true;
             }
         }
         return false;
     }
-    public String[][] showYouMind() {
-        return enemiFieldShadow;
+    public CellState[][] showYouMind() {
+        return enemiField;
     }
 }

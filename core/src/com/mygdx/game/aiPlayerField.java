@@ -13,10 +13,10 @@ public class aiPlayerField extends SeaField {
 
     public aiPlayerField(int x, int y) {
         super(x, y);
-        fieldSet = new String[FIELD_SIZE][FIELD_SIZE];
+        fieldStateSet = new CellState[FIELD_SIZE][FIELD_SIZE];
         for (int i = 0; i < FIELD_SIZE; i++)
             for (int j = 0; j < FIELD_SIZE; j++){
-                fieldSet[i][j] = WATER_CELL;
+                fieldStateSet[i][j] = CellState.WATER;
             }
         ai = new autoIntelect();
         setAllShipOnField();
@@ -27,7 +27,7 @@ public class aiPlayerField extends SeaField {
     public int[] doStrike() {
         return ai.doStrikeCalculation();
     }
-    public void hearEcho(int[] strikeCoordinate, String strikeEcho) {
+    public void hearEcho(int[] strikeCoordinate, CellState strikeEcho) {
         ai.strikeLearning(strikeCoordinate,strikeEcho);
     }
     public void render(SpriteBatch batch) {
@@ -35,19 +35,19 @@ public class aiPlayerField extends SeaField {
         batch.draw(seaTexture, x - 112, y - 44);
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
-                if (fieldSet[i][j] == SHIP_CELL && fieldIsMy())
+                if (fieldStateSet[i][j] == CellState.SHIP && fieldIsMy())
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);
-                if (fieldSet[i][j] == FIRED_SHIP_CELL)
+                if (fieldStateSet[i][j] == CellState.FIRED)
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);
-                if (fieldSet[i][j] == SPLASH_CELL)
+                if (fieldStateSet[i][j] == CellState.SPLASH)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
         }
         if(testShowDeadCell) {
-            String[][] f = ai.showYouMind();
+            CellState[][] f = ai.showYouMind();
             for (int i = 0; i < FIELD_SIZE; i++)
                 for (int j = 0; j < FIELD_SIZE; j++)
-                    if (f[i][j] == DEAD_CELL)
+                    if (f[i][j] == CellState.DEAD)
                         batch.draw(deadCellTexture, x + j * CELL_SIZE - MainClass.NEXT_FIELD_INDENT, y + i * CELL_SIZE);
         }
     }

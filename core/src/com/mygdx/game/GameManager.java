@@ -36,7 +36,7 @@ public class GameManager {
                 }
             } else {
                 int strikeCoordinate[] = player2.doStrike();
-                String strikeEcho = player1.gotStrike(strikeCoordinate[0], strikeCoordinate[1]);
+                CellState strikeEcho = player1.gotStrike(strikeCoordinate[0], strikeCoordinate[1]);
                 player2.hearEcho(strikeCoordinate, strikeEcho);
                 if (!player1.haveAliveShips()) {
                     gameContinue = false;
