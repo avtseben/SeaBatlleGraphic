@@ -1,10 +1,10 @@
 package com.mygdx.game;
-//
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-public abstract class SeaField {
+public class SeaField {
 
     final static int FIELD_SIZE = 10;
     final static int CELL_SIZE = 30;
@@ -17,6 +17,7 @@ public abstract class SeaField {
     protected int selCellY;
     protected static Texture cellsTexture;
     protected Texture seaTexture;
+    protected Texture seaTexture2;
     protected static Texture splashTexture;
     protected static Texture aimTexture;
     protected String playerType;
@@ -38,14 +39,22 @@ public abstract class SeaField {
         cellsTexture = new Texture("Cells.png");
         splashTexture = new Texture("splashCell.png");
         seaTexture = new Texture("FullWater.png");
+        seaTexture2 = new Texture("FullWater2.png");
     }
 
-    public void render(SpriteBatch batch) {//TODO game field beter to separate from player and this render should take bolean visible variable for rendering enemi ship
+    public void render(SpriteBatch batch, boolean visibleShip, int instance) {//TODO game field beter to separate from player and this render should take bolean visible variable for rendering enemi ship
         update();
-        batch.draw(seaTexture, x - 112, y - 44);
+        switch (instance) {
+            case 1:
+                batch.draw(seaTexture, x - 112, y - 44);
+                break;
+            case 2:
+                batch.draw(seaTexture2, x - 112, y - 44);
+                break;
+        }
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
-                if (fieldStateSet[i][j] == CellState.SHIP && fieldIsMy())
+                if (fieldStateSet[i][j] == CellState.SHIP && visibleShip)
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.FIRED)
                     batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
