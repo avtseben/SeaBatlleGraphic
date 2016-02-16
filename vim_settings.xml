@@ -3,13 +3,16 @@
     <state version="4" enabled="true" />
     <globalmarks />
     <filemarks>
+      <file name="/Dummy.txt" timestamp="1455630864844">
+        <mark key="[" line="0" column="0" />
+      </file>
       <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/aiPlayerField.java" timestamp="1455551805500">
         <mark key="[" line="24" column="39" />
         <mark key="]" line="24" column="39" />
         <mark key="^" line="24" column="43" />
         <mark key="." line="24" column="39" />
       </file>
-      <file name="/a.dummy" timestamp="1455630758572">
+      <file name="/a.dummy" timestamp="1455630864868">
         <mark key="[" line="0" column="0" />
       </file>
       <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" timestamp="1455551676786">
