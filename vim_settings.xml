@@ -3,24 +3,29 @@
     <state version="4" enabled="true" />
     <globalmarks />
     <filemarks>
-      <file name="/Dummy.txt" timestamp="1455630864844">
+      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/GameManager.java" timestamp="1455641489245">
+        <mark key="[" line="15" column="0" />
+        <mark key="]" line="15" column="0" />
+        <mark key="." line="15" column="0" />
+      </file>
+      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/aiPlayerField.java" timestamp="1455641440073">
+        <mark key="[" line="17" column="0" />
+        <mark key="]" line="17" column="0" />
+        <mark key="." line="17" column="0" />
+      </file>
+      <file name="/a.dummy" timestamp="1455641596258">
         <mark key="[" line="0" column="0" />
       </file>
-      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/aiPlayerField.java" timestamp="1455551805500">
-        <mark key="[" line="24" column="39" />
-        <mark key="]" line="24" column="39" />
-        <mark key="^" line="24" column="43" />
-        <mark key="." line="24" column="39" />
+      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/MainClass.java" timestamp="1455640901383">
+        <mark key="[" line="41" column="0" />
+        <mark key="]" line="42" column="36" />
+        <mark key="." line="41" column="0" />
       </file>
-      <file name="/a.dummy" timestamp="1455630864868">
-        <mark key="[" line="0" column="0" />
-      </file>
-      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" timestamp="1455551676786">
-        <mark key="'" line="52" column="80" />
-        <mark key="[" line="49" column="0" />
-        <mark key="]" line="54" column="83" />
-        <mark key="." line="39" column="51" />
-        <mark key="^" line="39" column="51" />
+      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" timestamp="1455641381286">
+        <mark key="'" line="61" column="80" />
+        <mark key="[" line="59" column="82" />
+        <mark key="]" line="59" column="82" />
+        <mark key="." line="59" column="82" />
       </file>
       <file name="/fragment.java" timestamp="1455550139798">
         <mark key="[" line="0" column="0" />
@@ -32,44 +37,44 @@
       <jump line="50" column="80" filename="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" />
     </jumps>
     <registers>
-      <register name="&quot;" type="4">
-        <text>fired</text>
+      <register name="&quot;" type="2">
+        <text encoding="base64">ICAgIHByaXZhdGUgYm9vbGVhbiB0ZXN0U2hvd0NvbXBNaW5kID0gdHJ1ZTsK</text>
       </register>
       <register name="-" type="4">
-        <text>fired</text>
+        <text>//Данный перегруженнный метод draw позволяет отрисовать часть картинки</text>
       </register>
       <register name="/" type="4">
         <text>cellsTexture</text>
       </register>
       <register name="0" type="2">
-        <text encoding="base64">ICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TSElQICYmIGZpZWxkSXNNeSgpKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoc2hpcFRleHR1cmUsIHggKyBqICogQ0VMTF9TSVpFLCB5ICsgaSAqIENFTExfU0laRSk7Ly/E4O3t++kg7+Xw5ePw8+bl7e3t++kg7OXy7uQgZHJhdyDv7ufi7uv/5fIg7vLw6PHu4uDy/CD34PHy/CDq4PDy6O3q6AogICAgICAgICAgICAgICAgaWYgKGZpZWxkU3RhdGVTZXRbaV1bal0gPT0gQ2VsbFN0YXRlLkZJUkVEKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoZmlyZWRUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUpOy8vxODt7fvpIO/l8OXj8PPm5e3t7fvpIOzl8u7kIGRyYXcg7+7n4u7r/+XyIO7y8Ojx7uLg8vwg9+Dx8vwg6uDw8ujt6ugKICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TUExBU0gpCiAgICAgICAgICAgICAgICAgICAgYmF0Y2guZHJhdyhzcGxhc2hUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUpOwo=</text>
+        <text encoding="base64">CQlnZiA9IG5ldyBIdW1hblBsYXllckZpZWxkKExFRlRfSU5ERU5ULEJPVFRPTV9JTkRFTlQpOwoJCWdmMiA9IG5ldyBhaVBsYXllckZpZWxkKExFRlRfSU5ERU5UK05FWFRfRklFTERfSU5ERU5ULEJPVFRPTV9JTkRFTlQpOwo=</text>
       </register>
-      <register name="1" type="4">
-        <text>fired</text>
+      <register name="1" type="2">
+        <text encoding="base64">ICAgIHByaXZhdGUgYm9vbGVhbiB0ZXN0U2hvd0NvbXBNaW5kID0gdHJ1ZTsK</text>
       </register>
       <register name="2" type="2">
-        <text encoding="base64">ICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TSElQICYmIGZpZWxkSXNNeSgpKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoY2VsbHNUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUsIDAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuRklSRUQpCiAgICAgICAgICAgICAgICAgICAgYmF0Y2guZHJhdyhjZWxsc1RleHR1cmUsIHggKyBqICogQ0VMTF9TSVpFLCB5ICsgaSAqIENFTExfU0laRSwgMzAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuU1BMQVNIKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoc3BsYXNoVGV4dHVyZSwgeCArIGogKiBDRUxMX1NJWkUsIHkgKyBpICogQ0VMTF9TSVpFKTsK</text>
+        <text encoding="base64">aW1wb3J0IGNvbS5iYWRsb2dpYy5nZHguc2NlbmVzLnNjZW5lMmQudXRpbHMuVGV4dHVyZVJlZ2lvbkRyYXdhYmxlOwppbXBvcnQgY29tLnN1bi54bWwuaW50ZXJuYWwubWVzc2FnaW5nLnNhYWoudXRpbC5UZWVJbnB1dFN0cmVhbTsK</text>
       </register>
       <register name="3" type="2">
-        <text encoding="base64">ICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TSElQICYmIGZpZWxkSXNNeSgpKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoY2VsbHNUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUsIDAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuRklSRUQpCiAgICAgICAgICAgICAgICAgICAgYmF0Y2guZHJhdyhjZWxsc1RleHR1cmUsIHggKyBqICogQ0VMTF9TSVpFLCB5ICsgaSAqIENFTExfU0laRSwgMzAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuU1BMQVNIKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoc3BsYXNoVGV4dHVyZSwgeCArIGogKiBDRUxMX1NJWkUsIHkgKyBpICogQ0VMTF9TSVpFKTsKICAgICAgICAgICAgfQogICAgICAgIH0K</text>
+        <text encoding="base64">ICAgICAgICBkZWFkQ2VsbFRleHR1cmUgPSBuZXcgVGV4dHVyZSgic2VhQ2VsbC5wbmciKTsK</text>
       </register>
-      <register name="4" type="4">
-        <text>ship</text>
+      <register name="4" type="2">
+        <text encoding="base64">aW1wb3J0IGNvbS5iYWRsb2dpYy5nZHguZ3JhcGhpY3MuVGV4dHVyZTsK</text>
       </register>
-      <register name="5" type="4">
-        <text>ship</text>
+      <register name="5" type="2">
+        <text encoding="base64">ICAgIHByaXZhdGUgYm9vbGVhbiB0ZXN0U2V0QWxsU2hpcCA9IGZhbHNlOwo=</text>
       </register>
-      <register name="6" type="4">
-        <text>ship</text>
+      <register name="6" type="2">
+        <text encoding="base64">ICAgIHByaXZhdGUgYm9vbGVhbiB0ZXN0U2hvd0RlYWRDZWxsID0gZmFsc2U7Cg==</text>
       </register>
-      <register name="7" type="4">
-        <text>C</text>
+      <register name="7" type="2">
+        <text encoding="base64">ICAgIHByaXZhdGUgVGV4dHVyZSBkZWFkQ2VsbFRleHR1cmU7Cg==</text>
       </register>
-      <register name="8" type="4">
-        <text>, 30, 0, 30, 30)</text>
+      <register name="8" type="2">
+        <text encoding="base64">ICAgIC8vcHJpdmF0ZSBUZXh0dXJlIHNlYVRleHR1cmU7Cg==</text>
       </register>
-      <register name="9" type="4">
-        <text>, 30, 0, 30, 30)</text>
+      <register name="9" type="2">
+        <text encoding="base64">IC8vICAgICAgIHNlYVRleHR1cmUgPSBuZXcgVGV4dHVyZSgiRnVsbFdhdGVyMi5wbmciKTsK</text>
       </register>
       <register name=":" type="4">
         <text>%s/cellsTexture/shipTexture/g</text>
