@@ -16,8 +16,8 @@ public class MainClass extends ApplicationAdapter {
 	aiPlayerField gf2;
 	GameManager game;
 	public static Random rand = new Random();
-	final int LEFT_INDENT = 117;
-	final int BOTTOM_INDENT = 45;
+	public final static int LEFT_INDENT = 117;
+	public final static int BOTTOM_INDENT = 45;
 	final static int NEXT_FIELD_INDENT = 520;
 
 	@Override
@@ -38,9 +38,9 @@ public class MainClass extends ApplicationAdapter {
         Gdx.gl.glClearColor(0.4f, 0.4f, 0.4f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        gf.render(batch);
-        gf2.render(batch);
 		game.render(batch);
+		gf.render(batch, true, 1);
+		gf2.render(batch, false, 2);
         batch.end();
 	}
 	public void update() {

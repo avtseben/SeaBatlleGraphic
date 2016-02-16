@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -12,7 +13,7 @@ public class GameManager {
     private boolean gameContinue;
     private BitmapFont fnt;
     private String winnerMessage;
-    private boolean testShowCompMind = true;
+    private Texture backGround;
 
     public GameManager (SeaField player1, SeaField player2) {
         this.player1 = player1;
@@ -20,9 +21,11 @@ public class GameManager {
         player1Turn = true;
         gameContinue = true;
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
+        backGround = new Texture("backGround.png");
     }
     public void render(SpriteBatch batch) {
         update();
+        batch.draw(backGround, 0 , 0);
         if (!gameContinue) fnt.draw(batch,winnerMessage,400,500);
     }
     public  void update() {
