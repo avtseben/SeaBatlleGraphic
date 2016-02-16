@@ -17,7 +17,7 @@ public class MainClass extends ApplicationAdapter {
 	GameManager game;
 	public static Random rand = new Random();
 	public final static int LEFT_INDENT = 117;
-	public final static int BOTTOM_INDENT = 45;
+	public final static int BOTTOM_INDENT = 96;
 	final static int NEXT_FIELD_INDENT = 520;
 
 	@Override
