@@ -15,7 +15,8 @@ public abstract class SeaField {
     protected int y;
     protected int selCellX;
     protected int selCellY;
-    protected static Texture cellsTexture;
+    protected static Texture shipTexture;
+    protected static Texture firedTexture;
     protected Texture seaTexture;
     protected static Texture splashTexture;
     protected static Texture aimTexture;
@@ -35,7 +36,8 @@ public abstract class SeaField {
             }
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         aimTexture = new Texture("pointer.tga");
-        cellsTexture = new Texture("Cells.png");
+        shipTexture = new Texture("shipCell.png");
+        firedTexture = new Texture("firedCell.png");
         splashTexture = new Texture("splashCell.png");
         seaTexture = new Texture("FullWater.png");
     }
@@ -46,9 +48,9 @@ public abstract class SeaField {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (fieldStateSet[i][j] == CellState.SHIP && fieldIsMy())
-                    batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
+                    batch.draw(shipTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.FIRED)
-                    batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
+                    batch.draw(firedTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.SPLASH)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
