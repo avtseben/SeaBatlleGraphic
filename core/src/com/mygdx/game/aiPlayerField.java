@@ -36,9 +36,9 @@ public class aiPlayerField extends SeaField {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (fieldStateSet[i][j] == CellState.SHIP && fieldIsMy())
-                    batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);
+                    batch.draw(shipTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.FIRED)
-                    batch.draw(cellsTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);
+                    batch.draw(firedTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.SPLASH)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
