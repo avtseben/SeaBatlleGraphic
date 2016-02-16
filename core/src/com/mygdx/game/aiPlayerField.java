@@ -1,7 +1,6 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class aiPlayerField extends SeaField {
 
@@ -9,7 +8,7 @@ public class aiPlayerField extends SeaField {
     private boolean testSetAllShip = false;
     private boolean testShowDeadCell = false;
     private Texture deadCellTexture;
-    private Texture seaTexture;
+    //private Texture seaTexture;
 
     public aiPlayerField(int x, int y) {
         super(x, y);
@@ -21,7 +20,7 @@ public class aiPlayerField extends SeaField {
         ai = new autoIntelect();
         setAllShipOnField();
         playerType = "Computer";
-        seaTexture = new Texture("FullWater2.png");
+ //       seaTexture = new Texture("FullWater2.png");
         deadCellTexture = new Texture("seaCell.png");
     }
     public int[] doStrike() {
@@ -30,7 +29,7 @@ public class aiPlayerField extends SeaField {
     public void hearEcho(int[] strikeCoordinate, CellState strikeEcho) {
         ai.strikeLearning(strikeCoordinate,strikeEcho);
     }
-    public void render(SpriteBatch batch) {
+  /*  public void render(SpriteBatch batch) {
         update();
         batch.draw(seaTexture, x - 112, y - 44);
         for (int i = 0; i < FIELD_SIZE; i++) {
@@ -50,5 +49,5 @@ public class aiPlayerField extends SeaField {
                     if (f[i][j] == CellState.DEAD)
                         batch.draw(deadCellTexture, x + j * CELL_SIZE - MainClass.NEXT_FIELD_INDENT, y + i * CELL_SIZE);
         }
-    }
+    }*/
 }

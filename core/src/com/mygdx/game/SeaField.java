@@ -41,7 +41,7 @@ public class SeaField {
         firedTexture = new Texture("firedCell.png");
         splashTexture = new Texture("splashCell.png");
         seaTexture = new Texture("FullWater.png");
-        seaTexture2 = new Texture("FullWater2.png");
+        seaTexture2 = new Texture("FullWater_FR.png");
     }
 
     public void render(SpriteBatch batch, boolean visibleShip, int instance) {//TODO game field beter to separate from player and this render should take bolean visible variable for rendering enemi ship
@@ -57,9 +57,9 @@ public class SeaField {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (fieldStateSet[i][j] == CellState.SHIP && visibleShip)
-                    batch.draw(shipTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 0, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
+                    batch.draw(shipTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.FIRED)
-                    batch.draw(firedTexture, x + j * CELL_SIZE, y + i * CELL_SIZE, 30, 0, 30, 30);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
+                    batch.draw(firedTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);//Данный перегруженнный метод draw позволяет отрисовать часть картинки
                 if (fieldStateSet[i][j] == CellState.SPLASH)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
