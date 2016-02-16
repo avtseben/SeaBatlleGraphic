@@ -1,0 +1,98 @@
+<application>
+  <component name="VimSettings">
+    <state version="4" enabled="true" />
+    <globalmarks />
+    <filemarks>
+      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/aiPlayerField.java" timestamp="1455551805500">
+        <mark key="[" line="24" column="39" />
+        <mark key="]" line="24" column="39" />
+        <mark key="^" line="24" column="43" />
+        <mark key="." line="24" column="39" />
+      </file>
+      <file name="/a.dummy" timestamp="1455630758572">
+        <mark key="[" line="0" column="0" />
+      </file>
+      <file name="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" timestamp="1455551676786">
+        <mark key="'" line="52" column="80" />
+        <mark key="[" line="49" column="0" />
+        <mark key="]" line="54" column="83" />
+        <mark key="." line="39" column="51" />
+        <mark key="^" line="39" column="51" />
+      </file>
+      <file name="/fragment.java" timestamp="1455550139798">
+        <mark key="[" line="0" column="0" />
+      </file>
+    </filemarks>
+    <jumps>
+      <jump line="37" column="8" filename="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" />
+      <jump line="46" column="12" filename="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" />
+      <jump line="50" column="80" filename="$USER_HOME$/IdeaProjects/SeaBatlleGraphic/core/src/com/mygdx/game/SeaField.java" />
+    </jumps>
+    <registers>
+      <register name="&quot;" type="4">
+        <text>fired</text>
+      </register>
+      <register name="-" type="4">
+        <text>fired</text>
+      </register>
+      <register name="/" type="4">
+        <text>cellsTexture</text>
+      </register>
+      <register name="0" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TSElQICYmIGZpZWxkSXNNeSgpKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoc2hpcFRleHR1cmUsIHggKyBqICogQ0VMTF9TSVpFLCB5ICsgaSAqIENFTExfU0laRSk7Ly/E4O3t++kg7+Xw5ePw8+bl7e3t++kg7OXy7uQgZHJhdyDv7ufi7uv/5fIg7vLw6PHu4uDy/CD34PHy/CDq4PDy6O3q6AogICAgICAgICAgICAgICAgaWYgKGZpZWxkU3RhdGVTZXRbaV1bal0gPT0gQ2VsbFN0YXRlLkZJUkVEKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoZmlyZWRUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUpOy8vxODt7fvpIO/l8OXj8PPm5e3t7fvpIOzl8u7kIGRyYXcg7+7n4u7r/+XyIO7y8Ojx7uLg8vwg9+Dx8vwg6uDw8ujt6ugKICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TUExBU0gpCiAgICAgICAgICAgICAgICAgICAgYmF0Y2guZHJhdyhzcGxhc2hUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUpOwo=</text>
+      </register>
+      <register name="1" type="4">
+        <text>fired</text>
+      </register>
+      <register name="2" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TSElQICYmIGZpZWxkSXNNeSgpKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoY2VsbHNUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUsIDAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuRklSRUQpCiAgICAgICAgICAgICAgICAgICAgYmF0Y2guZHJhdyhjZWxsc1RleHR1cmUsIHggKyBqICogQ0VMTF9TSVpFLCB5ICsgaSAqIENFTExfU0laRSwgMzAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuU1BMQVNIKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoc3BsYXNoVGV4dHVyZSwgeCArIGogKiBDRUxMX1NJWkUsIHkgKyBpICogQ0VMTF9TSVpFKTsK</text>
+      </register>
+      <register name="3" type="2">
+        <text encoding="base64">ICAgICAgICAgICAgICAgIGlmIChmaWVsZFN0YXRlU2V0W2ldW2pdID09IENlbGxTdGF0ZS5TSElQICYmIGZpZWxkSXNNeSgpKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoY2VsbHNUZXh0dXJlLCB4ICsgaiAqIENFTExfU0laRSwgeSArIGkgKiBDRUxMX1NJWkUsIDAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuRklSRUQpCiAgICAgICAgICAgICAgICAgICAgYmF0Y2guZHJhdyhjZWxsc1RleHR1cmUsIHggKyBqICogQ0VMTF9TSVpFLCB5ICsgaSAqIENFTExfU0laRSwgMzAsIDAsIDMwLCAzMCk7CiAgICAgICAgICAgICAgICBpZiAoZmllbGRTdGF0ZVNldFtpXVtqXSA9PSBDZWxsU3RhdGUuU1BMQVNIKQogICAgICAgICAgICAgICAgICAgIGJhdGNoLmRyYXcoc3BsYXNoVGV4dHVyZSwgeCArIGogKiBDRUxMX1NJWkUsIHkgKyBpICogQ0VMTF9TSVpFKTsKICAgICAgICAgICAgfQogICAgICAgIH0K</text>
+      </register>
+      <register name="4" type="4">
+        <text>ship</text>
+      </register>
+      <register name="5" type="4">
+        <text>ship</text>
+      </register>
+      <register name="6" type="4">
+        <text>ship</text>
+      </register>
+      <register name="7" type="4">
+        <text>C</text>
+      </register>
+      <register name="8" type="4">
+        <text>, 30, 0, 30, 30)</text>
+      </register>
+      <register name="9" type="4">
+        <text>, 30, 0, 30, 30)</text>
+      </register>
+      <register name=":" type="4">
+        <text>%s/cellsTexture/shipTexture/g</text>
+      </register>
+    </registers>
+    <search>
+      <last-pattern>cellsTexture</last-pattern>
+      <last-replace>shipTexture</last-replace>
+      <last-substitute>cellsTexture</last-substitute>
+      <last-dir>0</last-dir>
+      <show-last>false</show-last>
+    </search>
+    <history>
+      <history-search>
+        <entry>cellsTexture</entry>
+      </history-search>
+      <history-cmd>
+        <entry>%s/cellsTexture/shipTexture/g</entry>
+      </history-cmd>
+      <history-expr />
+      <history-input />
+    </history>
+    <shortcut-conflicts>
+      <shortcut-conflict owner="vim">
+        <text>ctrl pressed C</text>
+      </shortcut-conflict>
+    </shortcut-conflicts>
+  </component>
+</application>
