@@ -17,13 +17,7 @@ public class AiPlayer extends Player {
         int y = strikeCoord[1];
         CellState strikeEcho = _enemyGF.gotStrike(y,x);
         ai.strikeLearning(strikeCoord,strikeEcho);
-        switch (strikeEcho) {
-            case SPLASH:
-                return TurnResult.Miss;
-            case FIRED:
-                return TurnResult.Hit;
-        }
-        return TurnResult.Wait;
+        return strikeEcho2TurnResult(strikeEcho);
     }
 }
 

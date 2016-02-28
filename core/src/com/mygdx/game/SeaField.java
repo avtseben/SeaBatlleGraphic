@@ -21,9 +21,7 @@ public class SeaField {
     protected Texture seaTexture2;
     protected static Texture splashTexture;
     protected static Texture aimTexture;
-    protected String playerType;
     protected int shipSet[] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1}; //4-Однопалубных 3-двухпалубных 2-трех палубных и 1 -четырехпалубный
-    protected boolean isMine = false;
     protected boolean testSetAllShip = false;
 
 
@@ -76,26 +74,6 @@ public class SeaField {
             selCellX = -1;
             selCellY = -1;
         }
-    }
-
-    public boolean clickForStrike() {
-        if (InputHandler.isClicked() && selCellY > -1 && selCellX > -1 && !fieldIsMy())
-            if (fieldStateSet[selCellY][selCellX] == CellState.WATER || fieldStateSet[selCellY][selCellX] == CellState.SHIP) {
-                gotStrike(selCellX, selCellY);
-                return true;
-            }
-        return false;
-    }
-
-    public boolean fieldIsMy() {
-        return isMine;
-    }
-
-    public boolean haveAliveShips() {
-        for (int i = 0; i < FIELD_SIZE; i++)
-            for (int j = 0; j < FIELD_SIZE; j++)
-                if (fieldStateSet[i][j] == CellState.SHIP) return true;
-        return false;
     }
     public boolean setAllShipOnField() {
         char tempDir = 'H';
@@ -188,19 +166,6 @@ public class SeaField {
         if (InputHandler.getMouseY() < y || InputHandler.getMouseY() >= y + FIELD_SIZE_PIXELS)
             selCellY = -1;
         return selCellY;
-    }
-    public TurnResult strike(int _y, int _x) {
-        if (_x > -1 && _y > -1) {
-            switch (fieldStateSet[_y][_x]) {
-                case SHIP:
-                    fieldStateSet[_y][_x] = CellState.FIRED;
-                    return TurnResult.Hit;
-                case WATER:
-                    fieldStateSet[_y][_x] = CellState.SPLASH;
-                    return TurnResult.Miss;
-            }
-        }
-        return TurnResult.Wait;
     }
     public CellState gotStrike(int x, int y) {
         if (fieldStateSet[y][x] == CellState.SHIP) {

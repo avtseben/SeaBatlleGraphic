@@ -15,11 +15,6 @@ public class autoIntelect {
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
                 enemiField[i][j] = CellState.WATER;
             }
-        enemiFieldShadow = new String[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
-        for (int i = 0; i < SeaField.FIELD_SIZE; i++)
-            for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                enemiField[i][j] = CellState.WATER;
-            }
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
 
     }
