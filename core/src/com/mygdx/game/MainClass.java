@@ -12,8 +12,8 @@ import java.util.Random;
 public class MainClass extends ApplicationAdapter {
 	SpriteBatch batch;
 	BitmapFont fnt;
-	HumanPlayerField gf;
-	aiPlayerField gf2;
+	HumanPlayer pl1;
+	AiPlayer pl2;
 	GameManager game;
 	public static Random rand = new Random();
 	public final static int LEFT_INDENT = 117;
@@ -23,10 +23,10 @@ public class MainClass extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		gf = new HumanPlayerField(LEFT_INDENT,BOTTOM_INDENT);
-		gf2 = new aiPlayerField(LEFT_INDENT+NEXT_FIELD_INDENT,BOTTOM_INDENT);
+		pl1 = new HumanPlayer(new SeaField(LEFT_INDENT,BOTTOM_INDENT));
+		pl2 = new AiPlayer(new SeaField(LEFT_INDENT+NEXT_FIELD_INDENT,BOTTOM_INDENT));
 		fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
-		game = new GameManager(gf,gf2);
+		game = new GameManager(pl1,pl2);
 
 	}
 
@@ -39,8 +39,6 @@ public class MainClass extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 		game.render(batch);
-		gf.render(batch, true, 1);
-		gf2.render(batch, false, 2);
         batch.end();
 	}
 	public void update() {

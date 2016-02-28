@@ -35,7 +35,7 @@ public class SeaField {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 fieldStateSet[i][j] = CellState.WATER;
             }
-        setAllShipOnField(); //TRY
+        setAllShipOnField();
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         aimTexture = new Texture("pointer.tga");
         shipTexture = new Texture("shipCell.png");
