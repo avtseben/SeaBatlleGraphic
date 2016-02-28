@@ -19,7 +19,6 @@ public class GameManager {
     public GameManager (HumanPlayer player1, AiPlayer player2) {
         this.player1 = player1;
         this.player2 = player2;
-        //player1Turn = true;
         gState = GameState.Player1Turn;
         gameContinue = true;
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
@@ -28,9 +27,14 @@ public class GameManager {
     public void render(SpriteBatch batch) {
         update();
         batch.draw(backGround, 0 , 0);
-        if (!gameContinue) fnt.draw(batch,winnerMessage,400,500);
         player1.getField().render(batch, true, 1);
         player2.getField().render(batch, false, 2);
+        if(gState == GameState.GameOver) {
+            fnt.draw(batch,winnerMessage,400,500);
+            player1.getField().render(batch, true, 1);
+            player2.getField().render(batch, true, 2);
+        }
+
     }
     public  void update() {
         switch (gState) {
@@ -41,8 +45,15 @@ public class GameManager {
                 if(player2.turn(player1.getField()) == TurnResult.Miss) gState = GameState.Player1Turn;
                 break;
         }
-        if(gState != GameState.GameOver && (player1.getField().isDefeated() || player2.getField().isDefeated())) {
-            gState = GameState.GameOver;
+        if(gState != GameState.GameOver) {
+            if (player1.getField().isDefeated()) {
+                winnerMessage = "Player 2 is Win!";
+                gState = GameState.GameOver;
+            } else if (player2.getField().isDefeated()) {
+                winnerMessage = "Player 1 is Win!";
+                gState = GameState.GameOver;
+            }
+
         }
     }
      /*   if(gameContinue) {
