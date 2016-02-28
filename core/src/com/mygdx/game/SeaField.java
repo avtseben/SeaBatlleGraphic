@@ -213,4 +213,13 @@ public class SeaField {
         }
         return fieldStateSet[y][x];
     }
+    public boolean isDefeated() {
+        for (int i = 0; i < FIELD_SIZE; i++) {
+            for (int j = 0; j < FIELD_SIZE; j++) {
+                if (fieldStateSet[i][j] == CellState.SHIP) return false;
+            }
+        }
+        return true;
+    }
+
 }

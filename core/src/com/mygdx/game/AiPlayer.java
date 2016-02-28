@@ -1,5 +1,4 @@
 package com.mygdx.game;
-import java.util.Random;
 
 public class AiPlayer extends Player {
 
@@ -10,19 +9,21 @@ public class AiPlayer extends Player {
         playerType = "Computer";
         gf = _gf;
     }
-    private Random rand = new Random();
 
     @Override
     public TurnResult turn(SeaField _enemyGF) {
-        int x = rand.nextInt(10);
-        int y = rand.nextInt(10);
-        return _enemyGF.strike(y, x);
-    }
-    public int[] doStrike() {
-        return ai.doStrikeCalculation();
-    }
-    public void hearEcho(int[] strikeCoordinate, CellState strikeEcho) {
-        ai.strikeLearning(strikeCoordinate,strikeEcho);
+        int [] strikeCoord = ai.doStrikeCalculation();
+        int x = strikeCoord[0];
+        int y = strikeCoord[1];
+        CellState strikeEcho = _enemyGF.gotStrike(y,x);
+        ai.strikeLearning(strikeCoord,strikeEcho);
+        switch (strikeEcho) {
+            case SPLASH:
+                return TurnResult.Miss;
+            case FIRED:
+                return TurnResult.Hit;
+        }
+        return TurnResult.Wait;
     }
 }
 

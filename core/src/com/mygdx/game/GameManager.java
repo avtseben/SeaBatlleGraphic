@@ -9,16 +9,18 @@ public class GameManager {
 
     private HumanPlayer player1;
     private AiPlayer player2;//TODO not flexible
-    private boolean player1Turn;
+
     private boolean gameContinue;
     private BitmapFont fnt;
     private String winnerMessage;
     private Texture backGround;
+    private GameState gState;
 
     public GameManager (HumanPlayer player1, AiPlayer player2) {
         this.player1 = player1;
         this.player2 = player2;
-        player1Turn = true;
+        //player1Turn = true;
+        gState = GameState.Player1Turn;
         gameContinue = true;
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         backGround = new Texture("backGround.png");
@@ -31,7 +33,19 @@ public class GameManager {
         player2.getField().render(batch, false, 2);
     }
     public  void update() {
-        if(gameContinue) {
+        switch (gState) {
+            case Player1Turn:
+                if(player1.turn(player2.getField()) == TurnResult.Miss) gState = GameState.Player2Turn;
+                break;
+            case Player2Turn:
+                if(player2.turn(player1.getField()) == TurnResult.Miss) gState = GameState.Player1Turn;
+                break;
+        }
+        if(gState != GameState.GameOver && (player1.getField().isDefeated() || player2.getField().isDefeated())) {
+            gState = GameState.GameOver;
+        }
+    }
+     /*   if(gameContinue) {
             if (player1Turn) {
                 if (player2.getField().clickForStrike())
                     player1Turn = false;
@@ -50,5 +64,5 @@ public class GameManager {
                 player1Turn = true;
             }
         }
-    }
+    }*/
 }
