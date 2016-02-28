@@ -11,6 +11,7 @@ public class GameManager {
     private AiPlayer player2;//TODO not flexible
     private BitmapFont fnt;
     private String winnerMessage;
+    private String message;
     private Texture backGround;
     private GameState gState;
 
@@ -18,12 +19,19 @@ public class GameManager {
         this.player1 = player1;
         this.player2 = player2;
         gState = GameState.Player1Turn;
+        message = "";
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         backGround = new Texture("backGround.png");
     }
     public void render(SpriteBatch batch) {
         update();
         batch.draw(backGround, 0 , 0);
+        if(gState == GameState.Player1Turn) {
+            fnt.draw(batch,message,MainClass.NEXT_FIELD_INDENT+SeaField.FIELD_SIZE*SeaField.CELL_SIZE/2,500);
+        }
+        //if(gState == GameState.Player2Turn) {
+        //    fnt.draw(batch,message,MainClass.LEFT_INDENT+SeaField.FIELD_SIZE*SeaField.CELL_SIZE/2,500);
+        //}
         player1.getField().render(batch, true, 1);
         player2.getField().render(batch, false, 2);
         if(gState == GameState.GameOver) {
@@ -36,18 +44,30 @@ public class GameManager {
     public  void update() {
         switch (gState) {
             case Player1Turn:
-                if(player1.turn(player2.getField()) == TurnResult.Miss) gState = GameState.Player2Turn;
+                TurnResult turnResult = player1.turn(player2.getField());
+                if(turnResult == TurnResult.Miss) {
+                    message = "";
+                    gState = GameState.Player2Turn;
+                }
+                else if(turnResult == TurnResult.Hit) message = "Попал";
+                else if(turnResult == TurnResult.Kill) message = "Потопил";
                 break;
             case Player2Turn:
-                if(player2.turn(player1.getField()) == TurnResult.Miss) gState = GameState.Player1Turn;
+                turnResult = player2.turn(player1.getField());
+                if(turnResult == TurnResult.Miss) {
+                //    message = "Мимо";
+                    gState = GameState.Player1Turn;
+                }
+                //else if(turnResult == TurnResult.Hit) message = "Попал";
+                //else if(turnResult == TurnResult.Kill) message = "Потопил";
                 break;
         }
         if(gState != GameState.GameOver) {
             if (player1.getField().isDefeated()) {
-                winnerMessage = "Player 2 is Win!";
+                winnerMessage = "Французы победили";
                 gState = GameState.GameOver;
             } else if (player2.getField().isDefeated()) {
-                winnerMessage = "Player 1 is Win!";
+                winnerMessage = "Пираты победили";
                 gState = GameState.GameOver;
             }
 

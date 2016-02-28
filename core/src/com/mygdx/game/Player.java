@@ -16,7 +16,7 @@ public abstract class Player {
             case FIRED:
                 return TurnResult.Hit;
             case KILLED:
-                return TurnResult.Hit;
+                return TurnResult.Kill;
         }
         return TurnResult.Wait;
     }

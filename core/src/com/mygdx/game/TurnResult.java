@@ -1,6 +1,6 @@
 package com.mygdx.game;
 
 public enum TurnResult {
-    Wait, Hit, Miss
+    Wait, Hit, Miss, Kill
 }
 
