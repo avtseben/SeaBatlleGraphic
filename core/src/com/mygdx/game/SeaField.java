@@ -35,6 +35,7 @@ public class SeaField {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 fieldStateSet[i][j] = CellState.WATER;
             }
+        setAllShipOnField(); //TRY
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         aimTexture = new Texture("pointer.tga");
         shipTexture = new Texture("shipCell.png");
@@ -86,18 +87,6 @@ public class SeaField {
         return false;
     }
 
-    public CellState gotStrike(int x, int y) {
-        if (fieldStateSet[y][x] == CellState.SHIP) {
-            fieldStateSet[y][x] = CellState.FIRED;
-            return fieldStateSet[y][x];
-        }
-        if (fieldStateSet[y][x] == CellState.WATER) {
-            fieldStateSet[y][x] = CellState.SPLASH;
-            return fieldStateSet[y][x];
-        }
-        return fieldStateSet[y][x];
-    }
-
     public boolean fieldIsMy() {
         return isMine;
     }
@@ -114,7 +103,7 @@ public class SeaField {
             return true;
 
         for(int i = 0;i<shipSet.length;i++) {
-            if (MainClass.rand.nextInt(2) == 0) ///Бросаем кубик либо 0 либо 1, если 0 - строим вертикально
+            if (MainClass.rand.nextInt(2) == 0)
                 tempDir = 'V';
             else
                 tempDir = 'H';
@@ -186,5 +175,42 @@ public class SeaField {
             }
         }
         return true;
+    }
+    public int getMouseCellX() {
+        int selCellX = (InputHandler.getMouseX() - x) / CELL_SIZE;
+        if (InputHandler.getMouseX() < x || InputHandler.getMouseX() >= x + FIELD_SIZE_PIXELS)
+            selCellX = -1;
+        return selCellX;
+    }
+
+    public int getMouseCellY() {
+        int selCellY = (InputHandler.getMouseY() - y) / CELL_SIZE;
+        if (InputHandler.getMouseY() < y || InputHandler.getMouseY() >= y + FIELD_SIZE_PIXELS)
+            selCellY = -1;
+        return selCellY;
+    }
+    public TurnResult strike(int _y, int _x) {
+        if (_x > -1 && _y > -1) {
+            switch (fieldStateSet[_y][_x]) {
+                case SHIP:
+                    fieldStateSet[_y][_x] = CellState.FIRED;
+                    return TurnResult.Hit;
+                case WATER:
+                    fieldStateSet[_y][_x] = CellState.SPLASH;
+                    return TurnResult.Miss;
+            }
+        }
+        return TurnResult.Wait;
+    }
+    public CellState gotStrike(int x, int y) {
+        if (fieldStateSet[y][x] == CellState.SHIP) {
+            fieldStateSet[y][x] = CellState.FIRED;
+            return fieldStateSet[y][x];
+        }
+        if (fieldStateSet[y][x] == CellState.WATER) {
+            fieldStateSet[y][x] = CellState.SPLASH;
+            return fieldStateSet[y][x];
+        }
+        return fieldStateSet[y][x];
     }
 }
