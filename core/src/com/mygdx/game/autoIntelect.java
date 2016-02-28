@@ -3,13 +3,13 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
-public class autoIntelect {
+public class AutoIntelect {
 
     private String[][] enemiFieldShadow;
     private CellState[][] enemiField;
     private BitmapFont fnt;
 
-    public autoIntelect() {
+    public AutoIntelect() {
         enemiField = new CellState[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
         for (int i = 0; i < SeaField.FIELD_SIZE; i++)
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
