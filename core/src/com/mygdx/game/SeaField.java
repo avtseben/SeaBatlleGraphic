@@ -57,9 +57,9 @@ public class SeaField {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (fieldStateSet[i][j] == CellState.SHIP && visibleShip)
-                    batch.draw(shipTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
+                    batch.draw(shipTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
                 if (fieldStateSet[i][j] == CellState.FIRED)
-                    batch.draw(firedTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
+                    batch.draw(firedTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
                 if (fieldStateSet[i][j] == CellState.SPLASH)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
