@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import java.util.ArrayList;
+
 public class SeaField {
 
     final static int FIELD_SIZE = 10;
@@ -23,7 +26,7 @@ public class SeaField {
     protected static Texture aimTexture;
     protected int shipSet[] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1}; //4-Однопалубных 3-двухпалубных 2-трех палубных и 1 -четырехпалубный
     protected boolean testSetAllShip = false;
-
+    private ArrayList<Ship> ships = new ArrayList<Ship>();
 
     public SeaField(int x, int y) {
         this.x = x;
@@ -34,6 +37,7 @@ public class SeaField {
                 fieldStateSet[i][j] = CellState.WATER;
             }
         setAllShipOnField();
+        //showShips();
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         aimTexture = new Texture("pointer.tga");
         shipTexture = new Texture("shipCell.png");
@@ -42,7 +46,11 @@ public class SeaField {
         seaTexture = new Texture("FullWater.png");
         seaTexture2 = new Texture("FullWater_FR.png");
     }
-
+    public void showShips() {
+        for(Ship s : ships) {
+            s.showShipState();
+        }
+    }
     public void render(SpriteBatch batch, boolean visibleShip, int instance) {//TODO game field beter to separate from player and this render should take bolean visible variable for rendering enemi ship
         update();
         switch (instance) {
@@ -59,6 +67,8 @@ public class SeaField {
                     batch.draw(shipTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
                 if (fieldStateSet[i][j] == CellState.FIRED)
                     batch.draw(firedTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
+                if (fieldStateSet[i][j] == CellState.KILLED)
+                    batch.draw(firedTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
                 if (fieldStateSet[i][j] == CellState.SPLASH)
                     batch.draw(splashTexture, x + j * CELL_SIZE, y + i * CELL_SIZE);
             }
@@ -66,7 +76,6 @@ public class SeaField {
         if (selCellX > -1 && selCellY > -1)
             batch.draw(aimTexture, x + selCellX * CELL_SIZE, y + selCellY * CELL_SIZE);
     }
-
     public void update() {
         selCellX = (InputHandler.getMouseX() - x) / CELL_SIZE;
         selCellY = (InputHandler.getMouseY() - y) / CELL_SIZE;
@@ -131,8 +140,8 @@ public class SeaField {
             System.out.println("_x= " + _x  + "_vx*size= " + _size*vx);
             System.out.println("_y= " + _y  + "_vy*size= " + _size*vy);
         }
+        ships.add(new Ship(_x,_y,_dir,_size));
         return true;
-
     }
     private boolean freeWater(int _x, int _y)//Проверка на наличие свободной воды в радиусе одной клетки
     {
@@ -169,11 +178,24 @@ public class SeaField {
     }
     public CellState gotStrike(int x, int y) {
         if (fieldStateSet[y][x] == CellState.SHIP) {
-            fieldStateSet[y][x] = CellState.FIRED;
-            return fieldStateSet[y][x];
+            for(Ship s : ships) {
+                if(s.isHited(x,y))
+                    if(s.isKilled()) {
+                        fieldStateSet[y][x] = CellState.KILLED;
+                        System.out.println("" + CellState.KILLED);
+                        s.showShipState();
+                        return fieldStateSet[y][x];
+                    } else {
+                        fieldStateSet[y][x] = CellState.FIRED;
+                        System.out.println("" + CellState.FIRED);
+                        s.showShipState();
+                        return fieldStateSet[y][x];
+                    }
+            }
         }
         if (fieldStateSet[y][x] == CellState.WATER) {
             fieldStateSet[y][x] = CellState.SPLASH;
+            System.out.println("" + CellState.SPLASH);
             return fieldStateSet[y][x];
         }
         return fieldStateSet[y][x];

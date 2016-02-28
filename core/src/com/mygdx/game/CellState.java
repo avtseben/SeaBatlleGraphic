@@ -2,5 +2,5 @@ package com.mygdx.game;
 
 public enum CellState {
 
-    WATER, SHIP, FIRED, SPLASH, NEXT_STRIKE, DEAD
+    WATER, SHIP, FIRED, SPLASH, NEXT_STRIKE, DEAD, KILLED
 }

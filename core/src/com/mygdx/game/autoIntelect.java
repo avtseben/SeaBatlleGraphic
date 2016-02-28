@@ -106,16 +106,12 @@ public class autoIntelect {
         for(int i = iStart; i <= iStop; i=i+2) {
             if (enemiField[i][_x] == CellState.WATER) {
                 markNextStrike(_x,i);
-                System.out.println(enemiField[i][_x]);
-                System.out.println("coord:" + _x + i);
                 return true;
             }
         }
         for(int j = jStart; j <= jStop; j=j+2) {
             if (enemiField[_y][j] == CellState.WATER) {
                 markNextStrike(j,_y);
-                System.out.println(enemiField[_y][j]);
-                System.out.println("coord: " + j + _y);
                 return true;
             }
         }
