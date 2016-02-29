@@ -13,12 +13,9 @@ public class GameManager {
     private String winnerMessage;
     private String message;
     private Texture backGround;
-    private Texture debug;
     private Texture debugTextures;
-    private Texture next;
-    private Texture fire;
-    private Texture kill;
     private GameState gState;
+    private boolean debugModeOn;
     private CellState[][] cs;
 
     public GameManager (HumanPlayer player1, AiPlayer player2) {
@@ -28,11 +25,8 @@ public class GameManager {
         message = "";
         fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
         backGround = new Texture("backGround.png");
-        debug = new Texture("debugCell.png");
+        debugModeOn = false;
         debugTextures = new Texture("debugTextures.png");
-        next = new Texture("nextCell.png");
-        fire = new Texture("fireCell.png");
-        kill = new Texture("killCell.png");
     }
     public void render(SpriteBatch batch) {
         update();
@@ -51,16 +45,18 @@ public class GameManager {
             player2.getField().render(batch, true, 2);
         }
         //--------------------------------------------------
-        for (int i = 0; i < SeaField.FIELD_SIZE; i++) {
-            for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                if (cs[i][j] == CellState.DEAD)
-                    batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE,0, 0, 30, 30);
-                if (cs[i][j] == CellState.NEXT_STRIKE)
-                    batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE,30, 0, 30, 30);
-                if (cs[i][j] == CellState.FIRED)
-                    batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE,60, 0, 30, 30);
-                if (cs[i][j] == CellState.KILLED)
-                    batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE,120, 0, 30, 30);
+        if(debugModeOn) {
+            for (int i = 0; i < SeaField.FIELD_SIZE; i++) {
+                for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
+                    if (cs[i][j] == CellState.DEAD)
+                        batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE, 0, 0, 30, 30);
+                    if (cs[i][j] == CellState.NEXT_STRIKE)
+                        batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE, 30, 0, 30, 30);
+                    if (cs[i][j] == CellState.FIRED)
+                        batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE, 60, 0, 30, 30);
+                    if (cs[i][j] == CellState.KILLED)
+                        batch.draw(debugTextures, MainClass.LEFT_INDENT + i * SeaField.CELL_SIZE, MainClass.BOTTOM_INDENT + j * SeaField.CELL_SIZE, 120, 0, 30, 30);
+                }
             }
         }
         //---------------------------------------------------

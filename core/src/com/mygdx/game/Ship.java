@@ -32,28 +32,26 @@ public class Ship {
         }
     }
     public void render(SpriteBatch batch, int _leftIndent, int _bottomIndent) {
-        batch.draw(sTexture,_leftIndent-15 + x*SeaField.CELL_SIZE,_bottomIndent-15 + y*SeaField.CELL_SIZE,0,0,60,120);
+        if(!isKilled())
+            batch.draw(sTexture,_leftIndent-15 + x*SeaField.CELL_SIZE,_bottomIndent-15 + y*SeaField.CELL_SIZE,0,0,60,120);
+        else
+            batch.draw(sTexture,_leftIndent-15 + x*SeaField.CELL_SIZE,_bottomIndent-15 + y*SeaField.CELL_SIZE,120,0,60,120);
     }
     public void showShipState() {
-        //System.out.println("Ship№ " + id + " Size: " + size);
         for(int i = 0; i < size; i++) {
-          //  System.out.print("" + shipState[i]);
         }
-        //System.out.println("<____________>");
     }
     public boolean isHited (int _x, int _y) {
         switch (this.dir) {
             case 'V':
                 if (x == _x && y <= _y && y + size > _y) {
                     shipState[_y - y] = CellState.FIRED;
-          //          System.out.print("Fired otsek = " + (_y - y));
                     return true;
                 }
                 break;
             case 'H':
                 if (y == _y && x <= _x && x + size > _x) {
                     shipState[_x - x] = CellState.FIRED;
-            //        System.out.print("Fired otsek = " + (_x - x));
                     return true;
                 }
                 break;
