@@ -11,14 +11,17 @@ public class SmartIntelect extends AutoIntelect {
       }
       //Убил корабль больше одной палубы
       else if(strikeEcho == CellState.KILLED && enemiField[y][x] == CellState.NEXT_STRIKE) {
-          enemiField[y][x] = CellState.KILLED;
            for (int i = 0; i < SeaField.FIELD_SIZE; i++)
                for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
-                   if(enemiField[i][j] == CellState.FIRED || enemiField[i][j] == CellState.KILLED) {
+                   if(enemiField[i][j] == CellState.NEXT_STRIKE || enemiField[i][j] == CellState.FIRED ) {
+                       enemiField[i][j] = CellState.KILLED;
                        markAreaAfterKill(j,i);
                        markDiagonalCells(j,i);
-                       System.out.println("---More than onr");
                    }
+                   //From this:     //Do this:
+                   //#####          //######
+                   // FFFK          //#KKKK#
+                   //#####          //######
                }
        }
        //Убил однопалубный
