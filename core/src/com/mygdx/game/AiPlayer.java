@@ -2,10 +2,11 @@ package com.mygdx.game;
 
 public class AiPlayer extends Player {
 
-    private autoIntelect ai;
+    private AutoIntelect ai;
 
     public AiPlayer(SeaField _gf) {
-        ai = new autoIntelect();
+        ai = new SmartIntelect();
+        //ai = new AutoIntelect();
         playerType = "Computer";
         gf = _gf;
     }
@@ -18,6 +19,9 @@ public class AiPlayer extends Player {
         CellState strikeEcho = _enemyGF.gotStrike(y,x);
         ai.strikeLearning(strikeCoord,strikeEcho);
         return strikeEcho2TurnResult(strikeEcho);
+    }
+    public CellState[][] getMind() {
+        return ai.showYouMind();
     }
 }
 

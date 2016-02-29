@@ -24,25 +24,25 @@ public class Ship {
         }
     }
     public void showShipState() {
-        System.out.println("Ship№ " + id + " Size: " + size);
+        //System.out.println("Ship№ " + id + " Size: " + size);
         for(int i = 0; i < size; i++) {
-            System.out.print("" + shipState[i]);
+          //  System.out.print("" + shipState[i]);
         }
-        System.out.println("<____________>");
+        //System.out.println("<____________>");
     }
     public boolean isHited (int _x, int _y) {
         switch (this.dir) {
             case 'V':
                 if (x == _x && y <= _y && y + size > _y) {
                     shipState[_y - y] = CellState.FIRED;
-                    System.out.print("Fired otsek = " + (_y - y));
+          //          System.out.print("Fired otsek = " + (_y - y));
                     return true;
                 }
                 break;
             case 'H':
                 if (y == _y && x <= _x && x + size > _x) {
                     shipState[_x - x] = CellState.FIRED;
-                    System.out.print("Fired otsek = " + (_x - x));
+            //        System.out.print("Fired otsek = " + (_x - x));
                     return true;
                 }
                 break;

@@ -1,13 +1,9 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class AutoIntelect {
 
-    private String[][] enemiFieldShadow;
-    private CellState[][] enemiField;
-    private BitmapFont fnt;
+    public CellState[][] enemiField;
 
     public AutoIntelect() {
         enemiField = new CellState[SeaField.FIELD_SIZE][SeaField.FIELD_SIZE];
@@ -15,8 +11,6 @@ public class AutoIntelect {
             for (int j = 0; j < SeaField.FIELD_SIZE; j++) {
                 enemiField[i][j] = CellState.WATER;
             }
-        fnt = new BitmapFont(Gdx.files.internal("fnt2.fnt"), Gdx.files.internal("fnt2.png"), false);
-
     }
 
     public int[] doStrikeCalculation() {
@@ -36,15 +30,15 @@ public class AutoIntelect {
         } while (cellSplashed(strikeCoordinate[0],strikeCoordinate[1]) || cellIsDead(strikeCoordinate[0],strikeCoordinate[1]) || cellFired(strikeCoordinate[0],strikeCoordinate[1]));
             return strikeCoordinate;
     }
-    private boolean cellIsDead(int _x, int _y) {
+    protected boolean cellIsDead(int _x, int _y) {
         if(enemiField[_y][_x] == CellState.DEAD) return true;
         return false;
     }
-    private boolean cellSplashed(int _x, int _y) {
+    protected boolean cellSplashed(int _x, int _y) {
         if(enemiField[_y][_x] == CellState.SPLASH) return true;
         return false;
     }
-    private boolean cellFired(int _x, int _y) {
+    protected boolean cellFired(int _x, int _y) {
         if(enemiField[_y][_x] == CellState.FIRED) return true;
         return false;
     }
@@ -65,7 +59,7 @@ public class AutoIntelect {
         }
         enemiField[y][x] = strikeEcho;
     }
-    private void markDiagonalCells(int _x, int _y) {
+    protected void markDiagonalCells(int _x, int _y) {
         int iStart = _y - 1;
         int jStart = _x - 1;
         int iStop = _y + 1;
@@ -83,14 +77,14 @@ public class AutoIntelect {
         markDeadCell(jStop,iStop);
     }
 
-    private void markDeadCell(int x, int y){
+    protected void markDeadCell(int x, int y){
         enemiField[y][x] = CellState.DEAD;
     }
-    private void markNextStrike(int x, int y){
+    protected void markNextStrike(int x, int y){
 
         enemiField[y][x] = CellState.NEXT_STRIKE;
     }
-    private boolean scanEnemyShip(int _x, int _y)
+    protected boolean scanEnemyShip(int _x, int _y)
     {
         int iStart = _y - 1;
         int jStart = _x - 1;
