@@ -1,5 +1,8 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
 public class Ship {
 
     private static int shipCount;
@@ -9,7 +12,7 @@ public class Ship {
     private int x;
     private int y;
     private CellState [] shipState;
-    //private Texture;
+    private Texture sTexture;
 
     public Ship (int _x, int _y, char _dir, int _size) {
         id = shipCount;
@@ -22,6 +25,14 @@ public class Ship {
         for(int i = 0; i < _size; i++) {
             shipState[i] = CellState.SHIP;
         }
+        switch (_size) {
+            case 2:
+                sTexture = new Texture("2CellVerticalShip.png");
+                break;
+        }
+    }
+    public void render(SpriteBatch batch, int _leftIndent, int _bottomIndent) {
+        batch.draw(sTexture,_leftIndent-15 + x*SeaField.CELL_SIZE,_bottomIndent-15 + y*SeaField.CELL_SIZE,0,0,60,120);
     }
     public void showShipState() {
         //System.out.println("Ship№ " + id + " Size: " + size);
@@ -63,5 +74,11 @@ public class Ship {
             }
         return !aLive;
     }
+    public char getDir () {
+        return dir;
+    }
 
+    public int getSize() {
+        return size;
+    }
 }

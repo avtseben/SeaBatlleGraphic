@@ -27,19 +27,11 @@ public class AutoIntelect {
         do {
             strikeCoordinate[0] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
             strikeCoordinate[1] = MainClass.rand.nextInt(SeaField.FIELD_SIZE);
-        } while (cellSplashed(strikeCoordinate[0],strikeCoordinate[1]) || cellIsDead(strikeCoordinate[0],strikeCoordinate[1]) || cellFired(strikeCoordinate[0],strikeCoordinate[1]));
+        } while (isCellTurned(strikeCoordinate[0],strikeCoordinate[1]));
             return strikeCoordinate;
     }
-    protected boolean cellIsDead(int _x, int _y) {
-        if(enemiField[_y][_x] == CellState.DEAD) return true;
-        return false;
-    }
-    protected boolean cellSplashed(int _x, int _y) {
-        if(enemiField[_y][_x] == CellState.SPLASH) return true;
-        return false;
-    }
-    protected boolean cellFired(int _x, int _y) {
-        if(enemiField[_y][_x] == CellState.FIRED) return true;
+    protected boolean isCellTurned(int _x, int _y) {
+        if(enemiField[_y][_x] != CellState.WATER) return true;
         return false;
     }
     public void strikeLearning(int[] strikeCoordinate, CellState strikeEcho) {
@@ -78,7 +70,8 @@ public class AutoIntelect {
     }
 
     protected void markDeadCell(int x, int y){
-        enemiField[y][x] = CellState.DEAD;
+        if(enemiField[y][x] == CellState.WATER)
+            enemiField[y][x] = CellState.DEAD;
     }
     protected void markNextStrike(int x, int y){
 

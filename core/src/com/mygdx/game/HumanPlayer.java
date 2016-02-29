@@ -10,7 +10,7 @@ public class HumanPlayer extends Player {
     @Override
     public TurnResult turn(SeaField _enemyGF) {
         if (InputHandler.isClicked())
-            return strikeEcho2TurnResult(_enemyGF.gotStrike(_enemyGF.getMouseCellY(), _enemyGF.getMouseCellX()));
+            return strikeEcho2TurnResult(_enemyGF.gotStrike(_enemyGF.getMouseCellX(), _enemyGF.getMouseCellY()));
         return TurnResult.Wait;
     }
 }
