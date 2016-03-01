@@ -64,9 +64,9 @@ public class SeaField {
         for (int i = 0; i < FIELD_SIZE; i++) {
             for (int j = 0; j < FIELD_SIZE; j++) {
                 if (fieldStateSet[i][j] == CellState.SHIP && visibleShip)
-                    batch.draw(shipTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
-                if (fieldStateSet[i][j] == CellState.FIRED)
-                    batch.draw(firedTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
+                    batch.draw(shipTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);//TODO эти магические цыфры я не трогаю
+                if (fieldStateSet[i][j] == CellState.FIRED)                             //потому что этот блок уйдет
+                    batch.draw(firedTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);//будут отрисовываться только обекты
                 if (fieldStateSet[i][j] == CellState.KILLED)
                     batch.draw(firedTexture, x + j * CELL_SIZE - 30, y + i * CELL_SIZE);
                 if (fieldStateSet[i][j] == CellState.SPLASH)
@@ -77,7 +77,6 @@ public class SeaField {
             batch.draw(aimTexture, x + selCellX * CELL_SIZE, y + selCellY * CELL_SIZE);
         if(visibleShip) {
             for (Ship s : ships) {
-                if (s.getDir() == 'V' && s.getSize() == 2)
                     s.render(batch, x, y);
             }
         }
